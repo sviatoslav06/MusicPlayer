@@ -1,0 +1,47 @@
+﻿<Window x:Class="Player.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Player"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="450"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Click="openFolderBtn_Click" Name="openFolderBtn" Margin="5" HorizontalAlignment="Left">Add Music</Button>
+        <DockPanel Grid.Row="1">
+            <DockPanel DockPanel.Dock="Bottom" Margin="5" HorizontalAlignment="Center">
+                <Button Click="playBtn_Click" Name="playBtn" Background="{DynamicResource MaterialDesignPaper}" Width="50" Height="50">
+                    <Image Source="Images/playBtn.png"/>
+                </Button>
+                <Button Click="pauseBtn_Click" Name="pauseBtn" Background="{DynamicResource MaterialDesignPaper}" Width="50" Height="50">
+                    <Image Source="Images/pauseBtn.png"/>
+                </Button>
+                <Button Click="stopBtn_Click" Name="stopBtn" Background="{DynamicResource MaterialDesignPaper}" Width="50" Height="50">
+                    <Image Source="Images/stopBtn.png"/>
+                </Button>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Bottom">
+                <TextBox Name="currentPos" VerticalContentAlignment="Center">00:00:00</TextBox>
+                <TextBox Name="wholeTime" DockPanel.Dock="Right" VerticalContentAlignment="Center">00:00:00</TextBox>
+                <Slider Name="musicSlider" ValueChanged="musicSlider_ValueChanged" Margin="5"></Slider>
+            </DockPanel>
+            <MediaElement Name="mediaElement" MediaOpened="mediaElement_MediaOpened" LoadedBehavior="Manual" 
+                          DockPanel.Dock="Bottom"></MediaElement>
+            <Image Source="Images/rhcp.png"></Image>
+        </DockPanel>
+        <ListBox Name="musicList" SelectionChanged="musicList_SelectionChanged" Grid.Row="2"></ListBox>
+    </Grid>
+</Window>
